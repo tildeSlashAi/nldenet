@@ -24,18 +24,20 @@ class Config:
     def __init__(self, config_path = '../config.txt', wipe=False):
 
         # get path realtive to __file__
-        dir = os.path.dirname(__file__)
-        __config_path__ = os.path.join(dir, config_path)
-        self.__config_path = __config_path__
+        _ = os.path.dirname(__file__)
+        self.__config_path = os.path.join(_, config_path)
 
         config_exists = self.__config_exists()
 
-        self.__config = open(self.__config_path, 'w')
+        self.__config = open(self.__config_path, 'w+')
 
         if not config_exists or wipe:
             self.__create_default_config()
 
     def __config_exists(self):
+        '''
+        returns: Bool, does config exist?
+        '''
         return os.path.exists(self.__config_path)
 
     def __create_default_config(self):
@@ -48,8 +50,28 @@ class Config:
         self.__config.flush()
         os.fsync(self.__config.fileno())
 
-    def read_config(self):
+    def read(self):
         pass
 
-    def write_to_config(self):
+    def write(self):
         pass
+
+    def get_path(self):
+        return self.__config_path
+
+    def change_path(self, new_config_path):
+        # get new path realtive to __file__
+        _ = os.path.dirname(__file__)
+        new_config_path = os.path.join(_, new_config_path)
+
+        # close config so it can copy
+        self.__config.close()
+
+        # move file and change __config_path
+        os.rename(self.__config_path, new_config_path)
+        self.__config_path = new_config_path
+
+        # reopen config
+        self.__config = open(self.__config_path, 'w+')
+        
+    

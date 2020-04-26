@@ -18,4 +18,3 @@ import nldenet.setup as setup
 # print logo and infor
 startup.print_logo()
 startup.print_info(version, licence)
-
