@@ -15,4 +15,3 @@ w = np.ones((1))
 b = np.ones((1))
 
 net = debug_model(x, w, b, id=1)
-# test
