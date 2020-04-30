@@ -90,15 +90,11 @@ class Log:
         self._logger.log(level, message, *args, **kwargs)
 
 
-def init():
-    global_logger = Log()
-    return global_logger
-       
-
 if __name__ == '__main__':
     print('this is the wrong file to run')
 else: #TODO
+    # grab args from sysargs, cant come from global_config
     args = ()
     kwargs = {}
-    global_logger = init(*args, **kwargs)
+    global_logger = Log()
 
