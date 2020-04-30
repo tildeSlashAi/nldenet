@@ -74,4 +74,15 @@ class Config:
         # reopen config
         self.__config = open(self.__config_path, 'w+')
         
-    
+
+def init():
+    global_config = Config()
+    return global_config
+       
+
+if __name__ == '__main__':
+    print('this is the wrong file to run')
+else: #TODO
+    args = ()
+    kwargs = {}
+    global_config = init(*args, **kwargs)

@@ -10,7 +10,8 @@ Description...
 
 # local imports
 import nldenet.setup as setup
-from nldenet.utils.logger import global_logger as logger
+from nldenet.utils.logger import global_logger as global_logger
+from nldenet.utils.config import global_config as global_config
 
 
 def print_logo():
