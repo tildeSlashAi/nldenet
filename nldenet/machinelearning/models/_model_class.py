@@ -19,7 +19,6 @@ from nldenet.utils.config import global_config as global_config
 import tensorflow as tf
 import numpy as np
 
-
 class ModelClass:
 
     def __init__(self):
