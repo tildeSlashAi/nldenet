@@ -5,7 +5,7 @@
 #-----------------------------------------------------
 
 '''
-this file wraps all models in functions for easy importing
+this model proxy imports all models
 '''
 
 # local imports

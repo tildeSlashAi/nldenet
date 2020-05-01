@@ -31,8 +31,8 @@ class MultiSequential(ModelClass):
         check input shape
         '''
         super().__init__()
-        self._net = tf.linalg.transpose(input)
-
+        self._net = tf.transpose(input)
+        global_logger.info('Multi Sequential Model created!')
 
     def build(self):
         '''
