@@ -58,7 +58,7 @@ class _Config:
         self._config['main'] = {
             'foo':'bar'
         }
-
+        
         # write to config_file
         with open(self._config_path, 'w+') as config_file:
             self._config.write(config_file)

@@ -5,16 +5,18 @@
 #-----------------------------------------------------
 
 '''
-Description...
+redundant file at the moment...
+
+this file should contain any global inits that get executed when importing the package
 '''
 
 # local imports
-import nldenet.utils.config
-from nldenet.utils.logger import global_logger as logger
+from nldenet.utils.logger import global_logger as global_logger
+from nldenet.utils.config import global_config as global_config
 
 if __name__ == '__main__':
 	
 	print('this is the wrong setup file')
 	
 else:
-	config = nldenet.utils.config.Config()
+	pass
