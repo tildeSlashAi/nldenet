@@ -97,4 +97,3 @@ else: #TODO
     args = ()
     kwargs = {}
     global_logger = Log()
-
