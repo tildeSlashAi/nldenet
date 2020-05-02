@@ -26,6 +26,7 @@ class ModelClass():
     '''
 
     id_Counter = 1
+    
 
     def __init__(self):
         '''
@@ -40,6 +41,7 @@ class ModelClass():
 
 
 class SampleModel(ModelClass):
+
 
     def __init__(self, input):
         # implement arg check

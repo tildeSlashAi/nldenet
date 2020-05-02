@@ -26,24 +26,28 @@ class MultiSequential(ModelClass):
     Parallel feedforward networks with backwards skip connections to adjacent feedforward branch.
     '''
 
+
     def __init__(self, input):
         '''
         creates Multi Seq Model
         '''
         super().__init__()
-        
+
+        # store input
         self._input = input
-        self._model = input
+
+        # nn architecture
         self._architectue = {
-            branches:[{
+            branches: [{
                     order: 1
                 }]
             }
 
+        # highest branch order / number of parallel branches / order of ode
         self._branch_oder = 1
 
-
-        global_logger.info('Multi Sequential Model created, model id: {}'.format(self._id)) # better message
+        # print info to log
+        global_logger.info('Multi Sequential Model created, model-id: {}'.format(self._id)) # better message
         
 
     def build(self):
@@ -56,7 +60,16 @@ class MultiSequential(ModelClass):
         # run shape match checks
 
         # compile architectue to compute graph
+        # iterate all branches
+        # iterate all layers
+        # iterate all skip connections
+
+        # print info to log
+        global_logger.info('built Multi Sequential Model, model-id: {}'.format(self._id))
+
+        # return compute graph
         return self._model
+
 
     def print_model(self):
         '''
@@ -64,18 +77,21 @@ class MultiSequential(ModelClass):
         '''
         print('*a cool diagram*')
 
+
     def add_parallel_branch(self, skip_activation='relu'):
         '''
         add parallel branch to multi sequential network
         '''
-        #TODO
-        # should add parallel duplicate existing layers? Should there be a parallel model class?
-        # how should layers be stored? Store layer sizes in Array and only builde the compute
-        # when .build is called?
+        
+        # increase highest order of branch since new one is created
         self._branch_oder += 1
-        self._architectue['branches'].append({
+        
+        # TODO add more features to a branch
+        new_branch = {
                 'order': self._branch_oder
-            })
+            }
+
+        self._architectue['branches'].append(new_branch)
 
 
     def dense_layer(self, neurons, activation='relu', dropout=False, oder_of_branch=None):
@@ -93,11 +109,17 @@ class MultiSequential(ModelClass):
             # apply layer to all parallel sequential models
             pass
 
+
     def skip_connection(self):
+        '''
+        create skip connection between layers of the same branch (only forward)
+        '''
         pass
+
 
     def branch_skip_connection(self):
         '''
-        creates connection from one branch to another, can go backward from any lower order branch to a higher one
+        create skip connections between layers of different branches (also backwards)
+        can only connect in direction of assending order of branches
         '''
         pass 
