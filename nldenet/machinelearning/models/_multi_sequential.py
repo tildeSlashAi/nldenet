@@ -33,6 +33,7 @@ class MultiSequential(ModelClass):
         super().__init__()
         self._net = tf.transpose(input)
         global_logger.info('Multi Sequential Model created!')
+        
 
     def build(self):
         '''
@@ -49,5 +50,3 @@ class MultiSequential(ModelClass):
 
     def add_sequential_layer(self, activation='relu'):
         pass
-
-

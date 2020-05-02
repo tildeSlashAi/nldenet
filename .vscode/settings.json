@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\Domig\\dotslashai\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\Domig\\dotslashai\\Scripts\\python.exe",
+    "editor.minimap.renderCharacters": false
 }
