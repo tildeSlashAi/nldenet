@@ -28,23 +28,29 @@ class MultiSequential(ModelClass):
 
     def __init__(self, input):
         '''
-        check input shape
+        creates Multi Seq Model
         '''
         super().__init__()
-        self._net = tf.transpose(input)
-        global_logger.info('Multi Sequential Model created!')
+        self._input = input
+        self._model = input
+        global_logger.info('Multi Sequential Model created!') # better message
         
 
     def build(self):
         '''
         conduct shape match checks ahead of runtime
+        and build compute graph form layer descriptions
 
         returns: tensorflow computational graph
         '''
         # run shape match checks
-        return self._net
+        return self._model
 
     def add_parallel_layer(self, skip_activation='relu'):
+        #TODO
+        # should add parallel duplicate existing layers? Should there be a parallel model class?
+        # how should layers be stored? Store layer sizes in Array and only builde the compute
+        # when .build is called?
         pass
 
 
