@@ -1,4 +1,5 @@
 {
     "python.pythonPath": "C:\\Users\\Domig\\dotslashai\\Scripts\\python.exe",
-    "editor.minimap.renderCharacters": false
+    "editor.minimap.renderCharacters": false,
+    "python.linting.enabled": false
 }
