@@ -47,6 +47,9 @@ class MultiSequential(ModelClass):
         return self._model
 
     def add_parallel_layer(self, skip_activation='relu'):
+        '''
+        add parallel network layer
+        '''
         #TODO
         # should add parallel duplicate existing layers? Should there be a parallel model class?
         # how should layers be stored? Store layer sizes in Array and only builde the compute

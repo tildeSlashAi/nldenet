@@ -2,5 +2,5 @@
     "python.pythonPath": "C:\\Users\\Domig\\dsai-venv\\Scripts\\python.exe",
     "editor.minimap.renderCharacters": false,
     "python.linting.enabled": false,
-    "python.formatting.provider": "autopep8"
+    "python.formatting.provider": "yapf"
 }
