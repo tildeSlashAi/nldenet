@@ -19,6 +19,7 @@ from nldenet.utils.config import global_config as global_config
 import tensorflow as tf
 import numpy as np
 
+
 class ModelClass():
     '''
     Parent Class for ml models
@@ -36,6 +37,7 @@ class ModelClass():
 
     def build(self):
         raise NotImplemented
+
 
 class SampleModel(ModelClass):
 

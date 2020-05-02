@@ -36,7 +36,7 @@ class MultiSequential(ModelClass):
         self._model = input
         self._architectue = {}
 
-        global_logger.info('Multi Sequential Model created!') # better message
+        global_logger.info('Multi Sequential Model created, model id: {}'.format(self._id)) # better message
         
 
     def build(self):
@@ -47,11 +47,19 @@ class MultiSequential(ModelClass):
         returns: tensorflow computational graph
         '''
         # run shape match checks
+
+        # compile architectue to compute graph
         return self._model
+
+    def print_model(self):
+        '''
+        prints / returns diagroam of model
+        '''
+        print('*a cool diagram*')
 
     def add_parallel_layer(self, skip_activation='relu'):
         '''
-        add parallel network layer
+        add parallel network layer to architecture
         '''
         #TODO
         # should add parallel duplicate existing layers? Should there be a parallel model class?
@@ -60,5 +68,5 @@ class MultiSequential(ModelClass):
         pass
 
 
-    def add_sequential_layer(self, activation='relu'):
+    def add_sequential_layer(self, activation='relu', dropout=False):
         pass
