@@ -31,8 +31,11 @@ class MultiSequential(ModelClass):
         creates Multi Seq Model
         '''
         super().__init__()
+        
         self._input = input
         self._model = input
+        self._architectue = {}
+
         global_logger.info('Multi Sequential Model created!') # better message
         
 
