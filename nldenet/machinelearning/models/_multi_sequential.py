@@ -34,7 +34,14 @@ class MultiSequential(ModelClass):
         
         self._input = input
         self._model = input
-        self._architectue = {}
+        self._architectue = {
+            branches:[{
+                    order: 1
+                }]
+            }
+
+        self._branch_oder = 1
+
 
         global_logger.info('Multi Sequential Model created, model id: {}'.format(self._id)) # better message
         
@@ -57,16 +64,40 @@ class MultiSequential(ModelClass):
         '''
         print('*a cool diagram*')
 
-    def add_parallel_layer(self, skip_activation='relu'):
+    def add_parallel_branch(self, skip_activation='relu'):
         '''
-        add parallel network layer to architecture
+        add parallel branch to multi sequential network
         '''
         #TODO
         # should add parallel duplicate existing layers? Should there be a parallel model class?
         # how should layers be stored? Store layer sizes in Array and only builde the compute
         # when .build is called?
-        pass
+        self._branch_oder += 1
+        self._architectue['branches'].append({
+                'order': self._branch_oder
+            })
 
 
-    def add_sequential_layer(self, activation='relu', dropout=False):
+    def dense_layer(self, neurons, activation='relu', dropout=False, oder_of_branch=None):
+        '''
+        adds dense_layer to architectue
+        '''
+
+        layer = {
+            'neurons': neurons,
+            'activation': activation,
+            'dropout': dropout
+        }
+
+        if not parallel_layer:
+            # apply layer to all parallel sequential models
+            pass
+
+    def skip_connection(self):
         pass
+
+    def branch_skip_connection(self):
+        '''
+        creates connection from one branch to another, can go backward from any lower order branch to a higher one
+        '''
+        pass 
