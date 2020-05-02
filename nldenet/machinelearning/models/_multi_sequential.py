@@ -43,16 +43,11 @@ class MultiSequential(ModelClass):
         # run shape match checks
         return self._net
 
-    def add_parallel_layer(self):
+    def add_parallel_layer(self, skip_activation='relu'):
         pass
 
 
-    def add_sequential_layer(self):
-        pass 
-
-
-    def add_backward_skip(self):
+    def add_sequential_layer(self, activation='relu'):
         pass
 
 
-    
