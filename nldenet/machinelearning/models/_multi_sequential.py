@@ -39,7 +39,9 @@ class MultiSequential(ModelClass):
         # nn architecture
         self._architectue = {
             branches: [{
-                    order: 1
+                    'order': 1,
+                    'layers':[],
+                    'skip_connections':[]
                 }]
             }
 
@@ -88,33 +90,55 @@ class MultiSequential(ModelClass):
         
         # TODO add more features to a branch
         new_branch = {
-                'order': self._branch_oder
+                'order': self._branch_oder,
+                'skip_connections': [],
+                'layers': []
             }
 
         self._architectue['branches'].append(new_branch)
 
 
-    def dense_layer(self, neurons, activation='relu', dropout=False, oder_of_branch=None):
+    def dense_layer(self, neurons, activation='relu', dropout=False, branch=None):
         '''
         adds dense_layer to architectue
         '''
 
-        layer = {
+        new_layer = {
             'neurons': neurons,
             'activation': activation,
             'dropout': dropout
         }
 
-        if not parallel_layer:
-            # apply layer to all parallel sequential models
-            pass
+        if branch is None:
+            # add layer to all branches
+            for branch in self._architectue['branches']:
+                branch['layers'].append(new_layer)
+        else:
+            branch = self._architectue['branches'][branch - 1]
+            branch['layers'].append(new_layer)
 
 
-    def skip_connection(self):
+    def skip_connection(self, form, to, dropout=False, density=1, branch=None):
         '''
-        create skip connection between layers of the same branch (only forward)
+        create a dense skip connection between layers "from" to "to".
+
+        densitiy specifies the chance of each connection existing. TODO: deterministic?
         '''
-        pass
+
+        new_skip_connection = {
+            'from': None,
+            'to': None,
+            'density': density,
+            'droput': dropout
+        }
+
+        if branch is None:
+            for branch in self._architectue['branches']:
+                branch['skip_connections'].append(new_skip_connection)
+
+        else:
+            branch = self._architectue['branches'][branch - 1]
+            branch['skip_connections'].append(new_skip_connection)
 
 
     def branch_skip_connection(self):
@@ -122,4 +146,4 @@ class MultiSequential(ModelClass):
         create skip connections between layers of different branches (also backwards)
         can only connect in direction of assending order of branches
         '''
-        pass 
+        pass
