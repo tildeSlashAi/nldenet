@@ -9,5 +9,4 @@ this model proxy imports all models
 '''
 
 # local imports
-from nldenet.machinelearning.models._model_class import SampleModel
 from nldenet.machinelearning.models._multi_sequential import MultiSequential

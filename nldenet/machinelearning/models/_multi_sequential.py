@@ -27,18 +27,15 @@ class MultiSequential(ModelClass):
     '''
 
 
-    def __init__(self, input):
+    def __init__(self):
         '''
         creates Multi Seq Model
         '''
         super().__init__()
 
-        # store input
-        self._input = input
-
         # nn architecture
         self._architectue = {
-            branches: [{
+            'branches': [{
                     'order': 1,
                     'layers':[],
                     'skip_connections':[]
@@ -54,24 +51,16 @@ class MultiSequential(ModelClass):
 
     def build(self):
         '''
-        conduct shape match checks ahead of runtime
-        and build compute graph form layer descriptions
-
-        returns: tensorflow computational graph
+        check layer shape match
+        get input size
+        get output size
         '''
-        # run shape match checks
 
-        # compile architectue to compute graph
-        # iterate all branches
-        # iterate all layers
-        # iterate all skip connections
-
-        # print info to log
         global_logger.info('built Multi Sequential Model, model-id: {}'.format(self._id))
 
-        # return compute graph
-        return self._model
-
+    @tf.function
+    def run(self, input, paramters):
+        pass
 
     def print_model(self):
         '''
