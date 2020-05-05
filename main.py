@@ -16,7 +16,6 @@ def layer(*args):
         _ += i
     return tf.square(_)
 
-#new
 def run(a,b):
 
     # layer 1
