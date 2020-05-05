@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\Domig\\dsai-venv\\Scripts\\python.exe",
+    "python.pythonPath": "/home/domig/dsai-venv/bin/python",
     "editor.minimap.renderCharacters": false,
     "python.linting.enabled": false,
     "python.formatting.provider": "yapf"
