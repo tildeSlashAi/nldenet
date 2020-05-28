@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/domig/dsai-venv/bin/python",
+    "python.pythonPath": "/home/dominique/tildeslashai/bin/python",
     "editor.minimap.renderCharacters": false,
     "python.linting.enabled": false,
     "python.formatting.provider": "yapf"
