@@ -19,7 +19,7 @@ import numpy as np
 
 class MultiSequential(ModelClass):
     '''
-    Multi Sequential Model for fitting solutions to nonlinear differential equation solutions.
+    Multi Sequential Model for fitting solutions to nonlinear differential equation solutions
 
     flagship network architecture of nldenet (NonLinear Differential Equation net)
 
