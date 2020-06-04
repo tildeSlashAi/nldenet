@@ -31,8 +31,8 @@ class MultiSequential(ModelClass):
     '''
 
     def __init__(
-        self
-    ):
+            self
+            ):
         '''
         creates Multi Seq Model
         '''
@@ -56,8 +56,8 @@ class MultiSequential(ModelClass):
             )  # TODO: better message
 
     def build(
-        self
-    ):
+            self
+            ):
         '''
         check layer shape match
         get input size
@@ -70,22 +70,26 @@ class MultiSequential(ModelClass):
 
     @tf.function
     def run(
-        self,
-        input,
-        paramters
-    ):
+            self,
+            input,
+            paramters
+            ):
+
         pass
 
-    def print_model(self):
+    def print_model(
+            self
+            ):
+
         '''
         prints / returns diagroam of model
         '''
         print('*a cool diagram*')
 
     def add_parallel_branch(
-        self,
-        skip_activation='relu'
-    ):
+            self,
+            skip_activation='relu'
+            ):
         '''
         add parallel branch to multi sequential network
         '''
@@ -103,12 +107,13 @@ class MultiSequential(ModelClass):
         self._architectue['branches'].append(new_branch)
 
     def dense_layer(
-        self,
-        neurons,
-        activation='relu',
-        dropout=False,
-        branch=None
-    ):
+            self,
+            neurons,
+            activation='relu',
+            dropout=False,
+            branch=None
+            ):
+
         '''
         adds dense_layer to architectue
         '''
@@ -128,13 +133,13 @@ class MultiSequential(ModelClass):
             branch['layers'].append(new_layer)
 
     def skip_connection(
-        self,
-        form,
-        to,
-        dropout=False,
-        density=1,
-        branch=None
-    ):
+            self,
+            form,
+            to,
+            dropout=False,
+            density=1,
+            branch=None
+            ):
         '''
         create a dense skip connection between layers "from" to "to".
 
