@@ -97,7 +97,7 @@ class MultiSequential(ModelClass):
         # increase highest order of branch since new one is created
         self._branch_oder += 1
 
-        # TODO add more features to a branch
+        # TODO: add more features to a branch
         new_branch = {
                 'order': self._branch_oder,
                 'skip_connections': [],
