@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#-----------------------------------------------------
+# -----------------------------------------------------
 # nldenet (c) 2020 Dominique F. Garmier MIT licence
-#-----------------------------------------------------
+# -----------------------------------------------------
 
 '''
 this file wraps all models in functions for easy importing
 '''
 
-#local imports
+# local imports
 from nldenet.utils.config import global_config as global_config
 from nldenet.utils.logger import global_logger as global_logger
 from nldenet.machinelearning.models._model_class import ModelClass
@@ -17,17 +17,22 @@ from nldenet.machinelearning.models._model_class import ModelClass
 import tensorflow as tf
 import numpy as np
 
+
 class MultiSequential(ModelClass):
     '''
-    Multi Sequential Model for fitting solutions to nonlinear differential equation solutions
+    Multi Sequential Model for fitting solutions to nonlinear
+    differential equation solutions
 
-    flagship network architecture of nldenet (NonLinear Differential Equation net)
+    flagship network architecture of nldenet (NonLinear Differential Equation
+    net)
 
-    Parallel feedforward networks with backwards skip connections to adjacent feedforward branch.
+    Parallel feedforward networks with backwards skip connections to adjacent
+    feedforward branch.
     '''
 
-
-    def __init__(self):
+    def __init__(
+        self
+    ):
         '''
         creates Multi Seq Model
         '''
@@ -46,20 +51,29 @@ class MultiSequential(ModelClass):
         self._branch_oder = 1
 
         # print info to log
-        global_logger.info('Multi Sequential Model created, model-id: {}'.format(self._id)) # better message
-        
+        global_logger.info(
+            'Multi Sequential Model created, model-id: {}'.format(self._id)
+            )  # TODO: better message
 
-    def build(self):
+    def build(
+        self
+    ):
         '''
         check layer shape match
         get input size
         get output size
         '''
 
-        global_logger.info('built Multi Sequential Model, model-id: {}'.format(self._id))
+        global_logger.info(
+            'built Multi Sequential Model, model-id: {}'.format(self._id)
+            )
 
     @tf.function
-    def run(self, input, paramters):
+    def run(
+        self,
+        input,
+        paramters
+    ):
         pass
 
     def print_model(self):
@@ -68,15 +82,17 @@ class MultiSequential(ModelClass):
         '''
         print('*a cool diagram*')
 
-
-    def add_parallel_branch(self, skip_activation='relu'):
+    def add_parallel_branch(
+        self,
+        skip_activation='relu'
+    ):
         '''
         add parallel branch to multi sequential network
         '''
-        
+
         # increase highest order of branch since new one is created
         self._branch_oder += 1
-        
+
         # TODO add more features to a branch
         new_branch = {
                 'order': self._branch_oder,
@@ -86,8 +102,13 @@ class MultiSequential(ModelClass):
 
         self._architectue['branches'].append(new_branch)
 
-
-    def dense_layer(self, neurons, activation='relu', dropout=False, branch=None):
+    def dense_layer(
+        self,
+        neurons,
+        activation='relu',
+        dropout=False,
+        branch=None
+    ):
         '''
         adds dense_layer to architectue
         '''
@@ -106,12 +127,19 @@ class MultiSequential(ModelClass):
             branch = self._architectue['branches'][branch - 1]
             branch['layers'].append(new_layer)
 
-
-    def skip_connection(self, form, to, dropout=False, density=1, branch=None):
+    def skip_connection(
+        self,
+        form,
+        to,
+        dropout=False,
+        density=1,
+        branch=None
+    ):
         '''
         create a dense skip connection between layers "from" to "to".
 
-        densitiy specifies the chance of each connection existing. TODO: deterministic?
+        densitiy specifies the chance of each connection existing.
+        TODO: deterministic?
         '''
 
         new_skip_connection = {
@@ -129,10 +157,10 @@ class MultiSequential(ModelClass):
             branch = self._architectue['branches'][branch - 1]
             branch['skip_connections'].append(new_skip_connection)
 
-
     def branch_skip_connection(self):
         '''
-        create skip connections between layers of different branches (also backwards)
+        create skip connections between layers of different branches
+        (also backwards)
         can only connect in direction of assending order of branches
         '''
         pass
