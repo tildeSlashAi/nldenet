@@ -33,12 +33,16 @@ class ModelClass():
         gives model id
         '''
 
-        self._id = ModelClass.id_Counter
+        # unique identifier for each nn
+        self.id = ModelClass.id_Counter
         ModelClass.id_Counter += 1
 
     def build(self):
         '''
+        builds a tensorflow function based on some given architecture
         needs to be called before calling the nn
+
+        define this function to determine how architectures should be interpreted
         '''
 
 
