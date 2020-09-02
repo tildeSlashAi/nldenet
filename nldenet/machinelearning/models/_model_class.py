@@ -22,14 +22,18 @@ import numpy as np  # noqa
 
 class ModelClass():
     '''
-    Parent Class for ml models
+    Parent Class for nn models
+
+    this class implements base features of any nn model class
     '''
 
     id_Counter = 1
 
     def __init__(self, name=None, description=None):
         '''
-        gives model id
+        generates a unique model id
+        assigns / generates nn name
+        assigns description for the nn
         '''
 
         # unique identifier for each nn
