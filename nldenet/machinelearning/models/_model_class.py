@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#-----------------------------------------------------
+# ----------------------------------------------------
 # nldenet (c) 2020 Dominique F. Garmier MIT licence
-#-----------------------------------------------------
+# ----------------------------------------------------
 
 '''
 this is a sample model for code style references
@@ -18,6 +18,7 @@ from nldenet.utils.config import global_config as global_config
 # 3rd party imports
 import tensorflow as tf
 import numpy as np
+
 
 class ModelClass():
     '''
@@ -36,4 +37,16 @@ class ModelClass():
         ModelClass.id_Counter += 1
 
     def build(self):
-        raise NotImplemented
+        '''
+        needs to be called before calling the nn
+        '''
+
+
+        raise NotImplementedError
+
+    
+    def __call__(self):
+        '''
+        returns the value of the nn wrt to some given inputs and parameters
+        '''
+        raise NotImplementedError

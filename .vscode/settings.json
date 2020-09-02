@@ -1,5 +1,4 @@
 {
-    "python.pythonPath": "/home/dominique/venvs/tildeslashai/bin/python",
     "editor.minimap.renderCharacters": false,
     "python.linting.enabled": false,
     "python.formatting.provider": "yapf"
